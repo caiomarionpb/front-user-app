@@ -1,0 +1,322 @@
+/* === Reset básico === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background: #f4f5f9;
+  color: #333;
+  min-height: 100vh;
+}
+
+/* === Header === */
+.header {
+  background: #667eea;
+  color: #fff;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.header h1 {
+  font-size: 1.5rem;
+}
+
+.header nav a {
+  color: #fff;
+  margin-left: 15px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.header nav a:hover {
+  text-decoration: underline;
+}
+
+/* === Containers principais === */
+.container {
+  max-width: 440px;
+  margin: 30px auto;
+  padding: 0 15px;
+}
+
+/* === Botões padrão === */
+button {
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* === Inputs padrão === */
+input[type="text"], input[type="email"], input[type="password"] {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  outline: none;
+  transition: border 0.2s;
+}
+
+input:focus {
+  border-color: #667eea;
+}
+
+/* === Alerts === */
+.alert {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+  color: red;
+}
+
+/* === Serviços (Index) === */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin: 15px 0 30px;
+}
+
+.service-btn {
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.service-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+  background: #667eea;
+  color: #fff;
+}
+
+.service-btn.selected {
+  background: #4054b2;
+  color: #fff;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.service-name {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.service-price {
+  font-weight: 500;
+  color: #555;
+}
+
+/* === Mini Calendário (Index) === */
+#mini-calendar-container {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  padding: 15px;
+  margin-bottom: 30px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.calendar-header h3 {
+  font-size: 1.2rem;
+}
+
+.calendar-header button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #667eea;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.calendar-header button:hover {
+  color: #4054b2;
+}
+
+#mini-calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.day-of-week {
+  font-weight: bold;
+  font-size: 12px;
+  text-align: center;
+  color: #555;
+}
+
+.calendar-day {
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.calendar-day:hover {
+  background: #667eea;
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.calendar-day.selected {
+  background: #4054b2;
+  color: #fff;
+  font-weight: bold;
+}
+
+.calendar-day.today {
+  border: 2px solid #667eea;
+}
+
+.calendar-day.past {
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+/* === Horários (Index) === */
+.times-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.time-btn {
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+  cursor: pointer;
+  font-weight: 500;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.time-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+  background: #667eea;
+  color: #fff;
+}
+
+.time-btn.selected {
+  background: #4054b2;
+  color: #fff;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* === Botões de ação === */
+#btn-book {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  background: #667eea;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+#btn-book:hover:not(:disabled) {
+  background: #4054b2;
+  transform: translateY(-2px);
+}
+
+#btn-book:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* === Forms (Login/Register/Profile) === */
+form {
+  background: #fff;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  margin-bottom: 30px;
+}
+
+form h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #4054b2;
+}
+
+form button {
+  width: 100%;
+  background: #667eea;
+  color: #fff;
+  padding: 12px;
+  font-weight: bold;
+  border-radius: 12px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+form button:hover {
+  background: #4054b2;
+  transform: translateY(-2px);
+}
+
+form p {
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* === Responsivo === */
+@media(max-width: 480px) {
+  .services-grid, .times-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .calendar-day {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+  }
+}
+
+/* Inputs numéricos (telefone, idade, etc) */
+input[type="number"] {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+  font-size: 1rem;
+  background: #fff;
+}
+
+input[type="number"]:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 8px rgba(102,126,234,0.3);
+}

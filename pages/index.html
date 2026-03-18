@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SaaS Booking</title>
+<link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+
+<header class="header">
+  <h1>SaaS Booking</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="login.html">Login</a>
+    <a href="register.html">Registrar</a>
+    <a href="profile.html">Perfil</a>
+  </nav>
+</header>
+
+<main class="container">
+
+  <h2>Agende seu horário</h2>
+
+  <!-- Serviços -->
+  <h3>Selecione o serviço</h3>
+  <div id="services-container" class="services-grid">
+    <div class="service-btn" data-service="Corte" data-price="35">
+      <span class="service-name">Corte</span>
+      <span class="service-price">R$35</span>
+    </div>
+    <div class="service-btn" data-service="Corte e Barba" data-price="70">
+      <span class="service-name">Corte e Barba</span>
+      <span class="service-price">R$70</span>
+    </div>
+    <div class="service-btn" data-service="Barba" data-price="50">
+      <span class="service-name">Barba</span>
+      <span class="service-price">R$50</span>
+    </div>
+    <div class="service-btn" data-service="Corte, Barba e Sobrancelha" data-price="90">
+      <span class="service-name">Corte, Barba e Sobrancelha</span>
+      <span class="service-price">R$90</span>
+    </div>
+  </div>
+
+  <!-- Mini Calendário -->
+  <div id="mini-calendar-container">
+    <div class="calendar-header">
+      <button id="prev-month">&lt;</button>
+      <h3 id="month-year">Março 2026</h3>
+      <button id="next-month">&gt;</button>
+    </div>
+    <div id="mini-calendar"></div>
+  </div>
+
+  <!-- Horários -->
+  <h3>Escolha o horário</h3>
+  <div id="times-container" class="times-grid"></div>
+
+  <!-- Botão Agendar -->
+  <button id="btn-book" disabled>Agendar</button>
+  <p class="alert" id="alert"></p>
+
+</main>
+
+<script src="../scripts/index.js"></script>
+</body>
+</html>
