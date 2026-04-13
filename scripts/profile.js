@@ -25,10 +25,10 @@ async function loadProfile() {
       return;
     }
 
-    nameInput.value = data.name;
-    emailInput.value = data.email;
-    numberInput.value = data.number;
-    ageInput.value = data.age;
+    if (nameInput) nameInput.value = data.name || '';
+    if (emailInput) emailInput.value = data.email || '';
+    if (numberInput) numberInput.value = data.number || '';
+    if (ageInput) ageInput.value = data.age?.toString() || '';
   } catch (err) {
     console.error(err);
     alert('Erro na conexão com o servidor');
@@ -38,33 +38,37 @@ async function loadProfile() {
 loadProfile();
 
 // Atualiza profile
-profileForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
+if (profileForm) {
+  profileForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-  try {
-    const res = await fetch('http://localhost:3000/api/users/profile', {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      },
-      body: JSON.stringify({
-        name: nameInput.value,
-        number: numberInput.value,
-        age: ageInput.value
-      })
-    });
+    try {
+      const res = await fetch('http://localhost:3000/api/users/profile', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          name: nameInput?.value,
+          number: numberInput?.value,
+          age: Number(ageInput?.value)
+        })
+      });
 
-    const data = await res.json();
+      const data = await res.json();
 
-    if (!res.ok) {
-      alert(data.error || 'Erro ao atualizar perfil');
-      return;
+      if (!res.ok) {
+        alert(data.error || 'Erro ao atualizar perfil');
+        return;
+      }
+
+      alert(data.message || 'Perfil atualizado com sucesso!');
+    } catch (err) {
+      console.error(err);
+      alert('Erro na conexão com o servidor');
     }
-
-    alert(data.message || 'Perfil atualizado com sucesso!');
-  } catch (err) {
-    console.error(err);
-    alert('Erro na conexão com o servidor');
-  }
-});
+  });
+} else {
+  console.error('profileForm não encontrado.');
+}

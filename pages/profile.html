@@ -12,22 +12,25 @@
   <h1>SaaS Booking</h1>
   <nav>
     <a href="index.html">Home</a>
-    <a href="login.html">Login</a>
+    <a id="loginLink" href="login.html">Login</a>
     <a href="register.html">Registrar</a>
     <a href="profile.html">Perfil</a>
   </nav>
 </header>
 
 <main class="container">
-  <form id="profile-form">
+  <form id="profileForm">
     <h2>Meu Perfil</h2>
     <input type="text" id="name" placeholder="Nome completo">
     <input type="email" id="email" placeholder="Email" disabled>
+    <input type="text" id="number" placeholder="Número de telefone">
+    <input type="number" id="age" placeholder="Idade">
     <button type="submit">Atualizar Perfil</button>
     <p class="alert" id="profile-alert"></p>
   </form>
 </main>
 
+<script src="../scripts/nav.js"></script>
 <script src="../scripts/profile.js"></script>
 </body>
 </html>

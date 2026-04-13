@@ -1,305 +1,448 @@
+:root {
+  color-scheme: light;
+  --bg: #eef2f7;
+  --surface: #ffffff;
+  --surface-strong: #f8fbff;
+  --border: #d9e2ec;
+  --primary: #4f46e5;
+  --primary-dark: #3730a3;
+  --text: #111827;
+  --muted: #64748b;
+  --shadow: 0 30px 80px rgba(15, 23, 42, 0.08);
+  --radius: 18px;
+}
+
 /* === RESET === */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+html, body {
+  min-height: 100%;
 }
 
 body {
-  background: #f6f7fb;
-  color: #1e1e1e;
+  background: radial-gradient(circle at top left, rgba(79, 70, 229, 0.16), transparent 22%),
+              radial-gradient(circle at bottom right, rgba(15, 23, 42, 0.08), transparent 18%),
+              linear-gradient(180deg, #f7f8fc 0%, #eef2f7 48%, #e8edf5 100%);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 15% 20%, rgba(99, 102, 241, 0.08), transparent 16%),
+              radial-gradient(circle at 85% 80%, rgba(206, 213, 255, 0.08), transparent 18%);
+  pointer-events: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
 }
 
 /* === HEADER === */
 .header {
-  background: #fff;
-  border-bottom: 1px solid #eee;
-  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  padding: 18px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(14px);
 }
 
 .header h1 {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
-/* NAV MELHORADA */
 .header nav {
   display: flex;
-  gap: 8px;
+  gap: 12px;
+  align-items: center;
 }
 
 .header nav a {
-  padding: 8px 12px;
-  border-radius: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
   text-decoration: none;
-  font-size: 0.9rem;
-  color: #555;
-  transition: 0.2s;
+  font-size: 0.95rem;
+  color: var(--muted);
+  transition: all 0.2s ease;
 }
 
 .header nav a:hover {
-  background: #f3f4f6;
+  background: rgba(99, 102, 241, 0.1);
+  color: var(--primary-dark);
 }
 
-/* Aba ativa */
 .header nav a.active {
-  background: #6366f1;
+  background: var(--primary);
   color: #fff;
 }
 
 /* === CONTAINER === */
 .container {
-  max-width: 500px;
-  margin: 20px auto;
-  padding: 0 15px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 30px 24px 60px;
 }
 
-/* === CARD === */
-form {
-  background: #fff;
-  border-radius: 16px;
-  padding: 28px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-  border: 1px solid #eee;
+.main-title {
+  margin-bottom: 24px;
+  font-size: clamp(2rem, 2.6vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #111827;
+}
+
+/* === CARDS === */
+.card,
+form,
+.section,
+#mini-calendar-container,
+.service-btn,
+.time-btn {
+  background: var(--surface);
+}
+
+form,
+.section,
+#mini-calendar-container {
+  border-radius: var(--radius);
+  padding: 32px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
 }
 
 form h2 {
-  margin-bottom: 20px;
-  font-size: 1.4rem;
+  margin-bottom: 24px;
+  font-size: 1.75rem;
+  color: #0f172a;
 }
 
 /* === INPUTS === */
-input {
+input,
+textarea,
+select {
   width: 100%;
-  padding: 13px 14px;
-  margin-bottom: 14px;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  font-size: 0.95rem;
-  transition: 0.2s;
+  padding: 16px 18px;
+  margin-bottom: 16px;
+  border-radius: 14px;
+  border: 1px solid #d2d6dc;
+  background: #f8fafc;
+  color: #111827;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-input:focus {
-  border-color: #6366f1;
-  box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: rgba(79, 70, 229, 0.75);
+  box-shadow: 0 0 0 6px rgba(79, 70, 229, 0.12);
   outline: none;
 }
 
-/* === BOTÃO === */
-form button {
+/* === BUTTONS === */
+button,
+#btn-book {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  padding: 14px;
-  border-radius: 10px;
-  background: #6366f1;
-  color: #fff;
-  font-weight: 600;
+  padding: 16px 20px;
+  border-radius: 14px;
   border: none;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.01em;
   cursor: pointer;
-  transition: 0.2s;
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 12px 24px rgba(79, 70, 229, 0.15);
 }
 
-form button:hover {
-  background: #4f46e5;
+button:hover,
+#btn-book:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+button:disabled,
+#btn-book:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 /* === ALERT === */
 .alert {
-  margin-top: 10px;
-  font-size: 14px;
-  color: #e11d48;
+  margin-top: 12px;
+  font-size: 0.95rem;
+  color: #b91c1c;
   text-align: center;
 }
 
 /* === SERVIÇOS === */
 .services-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-  margin: 20px 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin: 24px 0;
 }
 
 .service-btn {
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  padding: 14px;
-  border-radius: 12px;
+  padding: 22px;
+  border-radius: 18px;
+  border: 1px solid #e2e8f0;
+  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.02);
   cursor: pointer;
-  transition: 0.2s;
+  transition: all 0.2s ease;
 }
 
 .service-btn:hover {
-  border-color: #6366f1;
+  transform: translateY(-2px);
+  border-color: rgba(79, 70, 229, 0.4);
 }
 
 .service-btn.selected {
-  border: 2px solid #6366f1;
-  background: #f5f6ff;
+  background: rgba(99, 102, 241, 0.12);
+  border-color: var(--primary);
+}
+
+.service-btn .service-name {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.service-btn .service-price {
+  color: var(--muted);
 }
 
 /* === CALENDÁRIO === */
-/* === CALENDÁRIO MELHORADO === */
 #mini-calendar-container {
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 20px;
+  padding: 30px;
   margin-bottom: 30px;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
 }
 
-/* Header */
 .calendar-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.calendar-header h3 {
-  font-size: 1.1rem;
-  font-weight: 600;
+  margin-bottom: 20px;
 }
 
 .calendar-header button {
-  background: #f3f4f6;
+  min-width: 42px;
+  min-height: 42px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
   border: none;
-  padding: 6px 10px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.2s;
+  background: rgba(79, 70, 229, 0.08);
+  color: var(--muted);
+  font-size: 1.25rem;
+  display: grid;
+  place-items: center;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .calendar-header button:hover {
-  background: #6366f1;
-  color: #fff;
+  background: rgba(79, 70, 229, 0.18);
+  color: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 20px rgba(79, 70, 229, 0.12);
 }
 
-/* Grid */
 #mini-calendar {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 8px;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 12px;
 }
 
-/* Dias da semana */
 .day-of-week {
-  font-size: 11px;
-  font-weight: 600;
-  text-align: center;
-  color: #9ca3af;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-bottom: 6px;
 }
 
-/* Dias */
 .calendar-day {
-  width: 100%;
-  aspect-ratio: 1/1;
-  border-radius: 10px;
-  text-align: center;
-  font-size: 14px;
-  line-height: 40px;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  display: grid;
+  place-items: center;
+  min-height: 54px;
+  border-radius: 16px;
   border: 1px solid transparent;
+  color: var(--text);
+  background: var(--surface-strong);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
 
-/* Hover */
 .calendar-day:hover {
-  background: #eef2ff;
-  border-color: #6366f1;
-  transform: scale(1.05);
+  transform: translateY(-2px);
+  border-color: rgba(79, 70, 229, 0.35);
+  background: rgba(99, 102, 241, 0.1);
 }
 
-/* Selecionado */
 .calendar-day.selected {
-  background: #6366f1;
+  background: var(--primary);
+  border-color: var(--primary-dark);
   color: #fff;
-  font-weight: 600;
-  box-shadow: 0 4px 10px rgba(99,102,241,0.3);
+  box-shadow: 0 12px 28px rgba(79, 70, 229, 0.18);
 }
 
-/* Hoje */
 .calendar-day.today {
-  border: 2px solid #6366f1;
-  font-weight: 600;
+  border-color: rgba(99, 102, 241, 0.65);
+  font-weight: 700;
 }
 
-/* Passado */
 .calendar-day.past {
-  color: #cbd5e1;
+  color: #94a3b8;
+  opacity: 0.72;
   cursor: not-allowed;
 }
 
-/* Desabilitado hover */
 .calendar-day.past:hover {
-  background: none;
-  border: none;
   transform: none;
+  background: var(--surface-strong);
 }
-/* === HORÁRIOS === */
+
 .times-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
 }
 
 .time-btn {
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  padding: 10px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.2s;
-  text-align: center;
+  min-height: 56px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.03);
+  background: var(--surface-strong);
+  font-weight: 600;
+  color: var(--text);
+  transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
 
 .time-btn:hover {
-  border-color: #6366f1;
+  transform: translateY(-2px);
+  border-color: rgba(79, 70, 229, 0.35);
 }
 
 .time-btn.selected {
-  background: #6366f1;
+  background: var(--primary);
+  border-color: var(--primary-dark);
   color: #fff;
-  border-color: #6366f1;
 }
 
-/* === RESPONSIVO === */
-@media (max-width: 480px) {
-  .container {
-    margin: 30px auto;
-  }
-}
-
+/* === SECTION STYLES === */
 .section {
-  background: #fff;
-  border-radius: 14px;
-  padding: 18px;
-  margin-bottom: 18px;
-  border: 1px solid #eee;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+  padding: 30px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
 }
 
 .section-title {
   font-size: 0.95rem;
-  font-weight: 600;
-  margin-bottom: 12px;
-  color: #444;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  color: var(--muted);
 }
 
 #btn-book {
-  width: 100%;
-  padding: 14px;
-  border-radius: 12px;
-  background: #6366f1;
-  color: #fff;
-  font-weight: 600;
-  margin-top: 10px;
-  box-shadow: 0 8px 20px rgba(99,102,241,0.3);
+  margin-top: 18px;
 }
 
-#btn-book:hover {
-  background: #4f46e5;
+/* === RESPONSIVO === */
+@media (max-width: 920px) {
+  .services-grid,
+  .times-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+
+  .header nav {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .container {
+    padding: 24px 18px 50px;
+  }
+
+  .main-title {
+    text-align: center;
+  }
+
+  form,
+  .section,
+  #mini-calendar-container {
+    padding: 24px;
+  }
+
+  .services-grid,
+  .times-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .header {
+    padding: 16px 16px;
+  }
+
+  .header h1 {
+    font-size: 1rem;
+  }
+
+  .header nav a {
+    padding: 10px 14px;
+  }
+
+  input,
+  textarea,
+  select {
+    padding: 14px 16px;
+  }
 }
