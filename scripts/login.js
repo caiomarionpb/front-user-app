@@ -1,5 +1,5 @@
 // js/login.js
-const loginForm = document.getElementById('loginForm');
+const loginForm = document.getElementById('login-form');
 
 loginForm.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -23,7 +23,7 @@ loginForm.addEventListener('submit', async (e) => {
 
     localStorage.setItem('token', data.token);
     alert('Login realizado com sucesso!');
-    window.location.href = 'profile.html';
+    window.location.href = 'services.html';
   } catch (err) {
     console.error(err);
     alert('Erro na conexão com o servidor');

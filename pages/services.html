@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SaaS Booking</title>
+<link rel="stylesheet" href="../CSS/modern.css">
+<link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+
+<header class="main-header">
+  <div class="logo">
+    <a href="index.html">SaaS Booking</a>
+  </div>
+  <nav class="main-nav">
+    <ul style="display:flex; gap:18px; align-items:center; list-style:none; margin:0; padding:0;">
+      <li><a href="index.html" style="color:#fff; text-decoration:none; font-weight:500; padding:8px 16px; border-radius:8px; transition:background 0.2s;">Home</a></li>
+      <li><a href="services.html" style="color:#fff; text-decoration:none; font-weight:500; padding:8px 16px; border-radius:8px; transition:background 0.2s;">Serviços</a></li>
+      <li><a href="profile.html" style="color:#fff; text-decoration:none; font-weight:500; padding:8px 16px; border-radius:8px; transition:background 0.2s;">Perfil</a></li>
+      <li><a href="login.html" class="btn btn-login">Entrar / Inscrever-se</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="container">
+
+
+  <h2 class="main-title" style="text-align:center; margin-bottom: 32px;">Agende seu horário</h2>
+
+  <!-- SERVIÇOS -->
+  <section class="form-section" style="max-width:900px; background:#232323; margin-bottom:32px;">
+    <div class="section-title" style="font-size:1.2rem; margin-bottom:18px;">Selecione o serviço</div>
+    <div id="services-container" class="services-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:18px;">
+      <div class="service-btn btn" data-service="Corte" data-price="35" style="background:#181818; text-align:center;">
+        <span class="service-name" style="display:block; font-size:1.1rem;">Corte</span>
+        <span class="service-price" style="color:#a5b4fc;">R$35</span>
+      </div>
+      <div class="service-btn btn" data-service="Corte e Barba" data-price="70" style="background:#181818; text-align:center;">
+        <span class="service-name" style="display:block; font-size:1.1rem;">Corte e Barba</span>
+        <span class="service-price" style="color:#a5b4fc;">R$70</span>
+      </div>
+      <div class="service-btn btn" data-service="Barba" data-price="50" style="background:#181818; text-align:center;">
+        <span class="service-name" style="display:block; font-size:1.1rem;">Barba</span>
+        <span class="service-price" style="color:#a5b4fc;">R$50</span>
+      </div>
+      <div class="service-btn btn" data-service="Corte e Sobrancelha" data-price="60" style="background:#181818; text-align:center;">
+        <span class="service-name" style="display:block; font-size:1.1rem;">Corte e Sobrancelha</span>
+        <span class="service-price" style="color:#a5b4fc;">R$60</span>
+      </div>
+      <div class="service-btn btn" data-service="Corte, Barba e Sobrancelha" data-price="90" style="background:#181818; text-align:center;">
+        <span class="service-name" style="display:block; font-size:1.1rem;">Corte, Barba e Sobrancelha</span>
+        <span class="service-price" style="color:#a5b4fc;">R$90</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALENDÁRIO -->
+  <section class="form-section" style="max-width:900px; background:#232323; margin-bottom:32px;">
+    <div class="section-title" style="font-size:1.2rem; margin-bottom:18px;">Escolha uma data</div>
+    <div id="mini-calendar-container">
+      <div class="calendar-header" style="display:flex; align-items:center; justify-content:center; gap:18px; margin-bottom:12px;">
+          <button id="prev-month" aria-label="Mês anterior" class="btn" style="padding:8px 16px;">‹</button>
+          <h3 id="month-year" style="margin:0; font-size:1.1rem;">Março 2026</h3>
+          <button id="next-month" aria-label="Próximo mês" class="btn" style="padding:8px 16px;">›</button>
+      </div>
+      <div id="mini-calendar"></div>
+    </div>
+  </section>
+
+  <!-- HORÁRIOS -->
+  <section class="form-section" style="max-width:900px; background:#232323; margin-bottom:32px;">
+    <div class="section-title" style="font-size:1.2rem; margin-bottom:18px;">Horários disponíveis</div>
+    <div id="times-container" class="times-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:14px;"></div>
+  </section>
+
+  <!-- BOTÃO -->
+  <section class="form-section" style="max-width:900px; background:#232323; text-align:center;">
+    <button id="btn-book" class="btn btn-primary" disabled style="width:60%; max-width:260px; margin:0 auto;">Agendar</button>
+    <p class="alert" id="alert" style="margin-top:12px;"></p>
+  </section>
+
+</main>
+
+<script src="../scripts/nav.js"></script>
+<script src="../scripts/services.js"></script>
+</body>
+</html>

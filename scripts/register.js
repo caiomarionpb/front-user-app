@@ -97,25 +97,23 @@ form.addEventListener('submit', async (e) => {
     const apiUrl = 'http://localhost:3000/api/auth/register';
     const res = await fetch(apiUrl, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email, password, number, age: ageNumber })
+      body: JSON.stringify({ name, email, password, number, age })
     });
 
     const data = await res.json();
 
     if (!res.ok) {
-      alert(data.error || 'Erro no cadastro');
+      alert(data.error || 'Erro ao registrar');
       return;
     }
 
-    localStorage.setItem('token', data.token);
-    alert('Cadastro realizado com sucesso!');
-    window.location.href = 'profile.html';
-
+    alert('Registro realizado com sucesso!');
+    window.location.href = 'login.html';
   } catch (err) {
-    console.error('Erro no fetch de registro:', err);
+    console.error(err);
     alert('Erro na conexão com o servidor');
   }
 });
 
+// Removido código duplicado e inválido
 console.log("JS carregado");

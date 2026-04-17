@@ -89,28 +89,38 @@ function checkEnableButton() {
 btnBook.addEventListener('click', async () => {
   if (!selectedDate || !selectedTime || !selectedService) return;
   const token = localStorage.getItem('token');
-  if (!token) return alertBox.textContent = 'Faça login para agendar!';
-  
+  if (!token) {
+    alertBox.style.color = 'red';
+    alertBox.textContent = 'Faça login para agendar!';
+    return;
+  }
   try {
     const res = await fetch('http://localhost:3000/api/bookings', {
       method: 'POST',
-      headers: { 
+      headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
       },
-      body: JSON.stringify({ 
-        date: selectedDate, 
-        time: selectedTime, 
-        service: selectedService, 
+      body: JSON.stringify({
+        date: selectedDate,
+        time: selectedTime,
+        service: selectedService,
         price: selectedPrice
       })
     });
-    if (!res.ok) throw new Error('Não foi possível agendar');
+    const data = await res.json();
+    if (!res.ok) {
+      console.error('Erro ao agendar:', data);
+      alertBox.style.color = 'red';
+      alertBox.textContent = data.error || 'Não foi possível agendar';
+      return;
+    }
     alertBox.style.color = 'green';
     alertBox.textContent = `Agendamento confirmado: ${selectedService} em ${selectedDate} às ${selectedTime} por R$${selectedPrice}!`;
   } catch(err) {
     alertBox.style.color = 'red';
-    alertBox.textContent = err.message;
+    alertBox.textContent = err.message || 'Erro inesperado ao agendar';
+    console.error('Erro inesperado ao agendar:', err);
   }
 });
 

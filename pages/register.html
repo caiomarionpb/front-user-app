@@ -4,31 +4,37 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Registrar - SaaS Booking</title>
-<link rel="stylesheet" href="../CSS/style.css">
+<link rel="stylesheet" href="../CSS/modern.css">
 </head>
 <body>
 
-<header class="header">
-  <h1>SaaS Booking</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a id="loginLink" href="login.html">Login</a>
-    <a href="register.html">Registrar</a>
-    <a href="profile.html">Perfil</a>
+<header class="main-header">
+  <div class="logo">
+    <a href="index.html">SaaS Booking</a>
+  </div>
+  <nav class="main-nav">
+    <ul style="display:flex; gap:18px; align-items:center; list-style:none; margin:0; padding:0;">
+      <li><a href="index.html" style="color:#fff; text-decoration:none; font-weight:500; padding:8px 16px; border-radius:8px; transition:background 0.2s;">Home</a></li>
+      <li><a href="services.html" style="color:#fff; text-decoration:none; font-weight:500; padding:8px 16px; border-radius:8px; transition:background 0.2s;">Serviços</a></li>
+      <li><a href="profile.html" style="color:#fff; text-decoration:none; font-weight:500; padding:8px 16px; border-radius:8px; transition:background 0.2s;">Perfil</a></li>
+      <li><a href="login.html" class="btn btn-login">Entrar / Inscrever-se</a></li>
+    </ul>
   </nav>
 </header>
 
 <main class="container">
-  <form id="registerForm">
-    <h2>Registrar Conta</h2>
-    <input type="text" id="name" placeholder="Nome completo" required>
-    <input type="email" id="email" placeholder="Email" required>
-    <input type="password" id="password" placeholder="Senha" required>
-    <input type="text" id="number" placeholder="Número de telefone" required>
-    <input type="number" id="age" placeholder="Idade" required>
-    <button type="submit">Criar Conta</button>
-    <p class="alert" id="register-alert"></p>
-  </form>
+  <section class="form-section">
+    <form id="registerForm">
+      <h2>Registrar Conta</h2>
+      <input type="text" id="name" placeholder="Nome completo" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Senha" required>
+      <input type="text" id="number" placeholder="Número de telefone" required>
+      <input type="number" id="age" placeholder="Idade" required>
+      <button type="submit">Criar Conta</button>
+      <p class="alert" id="register-alert"></p>
+    </form>
+  </section>
 </main>
 
 <script src="../scripts/nav.js"></script>

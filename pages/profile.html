@@ -4,30 +4,58 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Perfil - SaaS Booking</title>
-<link rel="stylesheet" href="../CSS/style.css">
+<link rel="stylesheet" href="../CSS/modern.css">
 </head>
 <body>
 
-<header class="header">
-  <h1>SaaS Booking</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a id="loginLink" href="login.html">Login</a>
-    <a href="register.html">Registrar</a>
-    <a href="profile.html">Perfil</a>
+<header class="main-header">
+  <div class="logo">
+    <a href="index.html">SaaS Booking</a>
+  </div>
+  <nav class="main-nav">
+    <ul style="display:flex; gap:18px; align-items:center; list-style:none; margin:0; padding:0;">
+      <li><a href="index.html" style="color:#fff; text-decoration:none; font-weight:500; padding:8px 16px; border-radius:8px; transition:background 0.2s;">Home</a></li>
+      <li><a href="services.html" style="color:#fff; text-decoration:none; font-weight:500; padding:8px 16px; border-radius:8px; transition:background 0.2s;">Serviços</a></li>
+      <li><a href="profile.html" style="color:#fff; text-decoration:none; font-weight:500; padding:8px 16px; border-radius:8px; transition:background 0.2s;">Perfil</a></li>
+      <li><a href="login.html" class="btn btn-login">Entrar / Inscrever-se</a></li>
+    </ul>
   </nav>
 </header>
 
 <main class="container">
-  <form id="profileForm">
-    <h2>Meu Perfil</h2>
-    <input type="text" id="name" placeholder="Nome completo">
-    <input type="email" id="email" placeholder="Email" disabled>
-    <input type="text" id="number" placeholder="Número de telefone">
-    <input type="number" id="age" placeholder="Idade">
-    <button type="submit">Atualizar Perfil</button>
-    <p class="alert" id="profile-alert"></p>
-  </form>
+  <section class="form-section">
+    <form id="profileForm">
+      <h2>Meu Perfil</h2>
+      <div class="profile-fields-row">
+        <input type="text" id="name" placeholder="Nome completo" disabled>
+        <input type="email" id="email" placeholder="Email" disabled>
+      </div>
+      <div class="profile-fields-row">
+        <input type="text" id="number" placeholder="Número de telefone" disabled>
+        <input type="number" id="age" placeholder="Idade" disabled>
+      </div>
+      <div class="profile-btns-row">
+        <button type="button" id="edit-profile-btn">Atualizar Perfil</button>
+        <button type="submit" id="save-profile-btn" style="display:none;">Salvar</button>
+        <button type="button" id="cancel-profile-btn" style="display:none;">Cancelar</button>
+      </div>
+      <p class="alert" id="profile-alert"></p>
+    </form>
+  </section>
+
+  <section class="form-section" id="future-bookings-section">
+    <h2>Próximos Agendamentos</h2>
+    <div id="future-bookings-list">
+      <p style="color:#aaa;">Nenhum agendamento futuro encontrado.</p>
+    </div>
+  </section>
+
+  <section class="form-section" id="history-bookings-section">
+    <h2>Histórico de Agendamentos</h2>
+    <div id="history-bookings-list">
+      <p style="color:#aaa;">Nenhum histórico encontrado.</p>
+    </div>
+  </section>
 </main>
 
 <script src="../scripts/nav.js"></script>
