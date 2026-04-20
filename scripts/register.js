@@ -97,6 +97,7 @@ form.addEventListener('submit', async (e) => {
     const apiUrl = 'http://localhost:3000/api/auth/register';
     const res = await fetch(apiUrl, {
       method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, email, password, number, age })
     });
 
