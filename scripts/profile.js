@@ -1,4 +1,13 @@
+/**
+ * Script responsável pela página de perfil do usuário.
+ * Permite visualizar e editar dados do perfil e listar agendamentos futuros e históricos.
+ */
+
 // --- Agendamentos ---
+/**
+ * Carrega os agendamentos do usuário (futuros e históricos) e exibe na tela.
+ * Permite confirmar ou cancelar agendamentos futuros.
+ */
 async function loadBookings() {
   alert('loadBookings chamada!');
   console.log('loadBookings chamada!');
@@ -39,6 +48,7 @@ async function loadBookings() {
           <div class="booking-actions"></div>
         `;
         const actions = div.querySelector('.booking-actions');
+        // Botão de confirmação de agendamento
         if (b.status === 'marcado') {
           const btnConfirm = document.createElement('button');
           btnConfirm.textContent = 'Confirmar Agendamento';
@@ -93,6 +103,11 @@ async function loadBookings() {
         futureList.appendChild(div);
       });
     // Formata data para dd/mm/yyyy
+    /**
+     * Formata uma string de data para o formato dd/mm/yyyy.
+     * @param {string} dateStr
+     * @returns {string}
+     */
     function formatDate(dateStr) {
       if (!dateStr) return '';
       const d = new Date(dateStr);
@@ -123,9 +138,13 @@ async function loadBookings() {
   }
 }
 
+
+// Carrega os agendamentos ao carregar a página
 window.addEventListener('DOMContentLoaded', loadBookings);
 
 
+
+// Elementos do formulário de perfil
 const nameInput = document.getElementById('name');
 const emailInput = document.getElementById('email');
 const numberInput = document.getElementById('number');
@@ -134,10 +153,15 @@ const profileForm = document.getElementById('profileForm');
 const editBtn = document.getElementById('edit-profile-btn');
 const saveBtn = document.getElementById('save-profile-btn');
 const cancelBtn = document.getElementById('cancel-profile-btn');
-let profileBackup = {};
+let profileBackup = {}; // Guarda os dados originais para restaurar em caso de cancelamento
+
 
 
 // Pega dados do profile
+/**
+ * Carrega os dados do perfil do usuário e preenche o formulário.
+ * Desabilita os campos após carregar.
+ */
 async function loadProfile() {
   try {
     const res = await fetch('http://localhost:3000/api/users/profile', {
@@ -163,12 +187,19 @@ async function loadProfile() {
   }
 }
 
+
+/**
+ * Habilita ou desabilita os campos do formulário de perfil.
+ * @param {boolean} disabled
+ */
 function setProfileDisabled(disabled) {
   nameInput.disabled = disabled;
   numberInput.disabled = disabled;
   ageInput.disabled = disabled;
 }
 
+
+// Evento para habilitar edição do perfil
 editBtn.addEventListener('click', () => {
   setProfileDisabled(false);
   saveBtn.style.display = '';
@@ -176,6 +207,7 @@ editBtn.addEventListener('click', () => {
   editBtn.style.display = 'none';
 });
 
+// Evento para cancelar edição e restaurar dados originais
 cancelBtn.addEventListener('click', () => {
   if (profileBackup) {
     nameInput.value = profileBackup.name || '';
@@ -188,9 +220,11 @@ cancelBtn.addEventListener('click', () => {
   editBtn.style.display = '';
 });
 
+// Carrega o perfil ao abrir a página
 loadProfile();
 
 // Atualiza profile
+// Evento de envio do formulário de perfil para atualizar os dados do usuário
 if (profileForm) {
   profileForm.addEventListener('submit', async (e) => {
     e.preventDefault();

@@ -1,6 +1,12 @@
-// js/login.js
-const loginForm = document.getElementById('login-form');
 
+// Script responsável pelo login do usuário.
+// Captura o formulário, envia os dados para a API e armazena o token em caso de sucesso.
+
+const loginForm = document.getElementById('login-form'); // Formulário de login
+
+
+// Evento de envio do formulário de login.
+// Envia email e senha para a API, armazena o token e redireciona em caso de sucesso.
 loginForm.addEventListener('submit', async (e) => {
   e.preventDefault();
 
@@ -21,6 +27,7 @@ loginForm.addEventListener('submit', async (e) => {
       return;
     }
 
+    // Salva o token no localStorage e redireciona para a página de serviços
     localStorage.setItem('token', data.token);
     alert('Login realizado com sucesso!');
     window.location.href = 'services.html';
